@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GadgetMaster.lk</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== LIGHT THEME ===== */
+        [data-theme="light"] {
+            --body-bg-1: #667eea;
+            --body-bg-2: #764ba2;
+            --body-bg-3: #f093fb;
+            --body-bg-4: #5ee7df;
+            --body-bg-5: #667eea;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --glass-shadow: rgba(0, 0, 0, 0.1);
+            --header-bg: rgba(255, 255, 255, 0.2);
+            --header-border: rgba(255, 255, 255, 0.3);
+            --input-bg: rgba(255, 255, 255, 0.2);
+            --input-border: rgba(255, 255, 255, 0.4);
+            --input-focus-border: rgba(102, 126, 234, 0.6);
+            --input-focus-bg: rgba(255, 255, 255, 0.35);
+            --text-color: #1a1a2e;
+            --text-muted: rgba(26, 26, 46, 0.5);
+            --icon-faint: rgba(26, 26, 46, 0.12);
+            --search-icon-color: rgba(26, 26, 46, 0.4);
+            --line-1: rgba(26, 26, 46, 0.1);
+            --line-2: rgba(26, 26, 46, 0.07);
+            --price-bg: rgba(102, 126, 234, 0.15);
+            --card-img-bg: rgba(255, 255, 255, 0.1);
+            --card-img-border: rgba(255, 255, 255, 0.15);
+            --btn-bg-1: #2a3fa0;
+            --btn-bg-2: #1a237e;
+            --btn-hover-shadow: rgba(42, 63, 160, 0.4);
+            --hero-bg-1: #1a2d6e;
+            --hero-bg-2: #2a4396;
+            --hero-bg-3: #3d5abe;
+            --hero-over-1: rgba(26, 35, 126, 0.75);
+            --hero-over-2: rgba(102, 126, 234, 0.5);
+            --orb-1: rgba(102, 126, 234, 0.5);
+            --orb-2: rgba(240, 147, 251, 0.4);
+            --toggle-bg: rgba(255, 255, 255, 0.25);
+            --toggle-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* ===== DARK THEME ===== */
+        [data-theme="dark"] {
+            --body-bg-1: #0a0a1a;
+            --body-bg-2: #111128;
+            --body-bg-3: #1a1a35;
+            --body-bg-4: #0e0e22;
+            --body-bg-5: #0a0a1a;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: rgba(0, 0, 0, 0.4);
+            --header-bg: rgba(10, 10, 28, 0.75);
+            --header-border: rgba(255, 255, 255, 0.06);
+            --input-bg: rgba(255, 255, 255, 0.07);
+            --input-border: rgba(255, 255, 255, 0.1);
+            --input-focus-border: rgba(102, 126, 234, 0.4);
+            --input-focus-bg: rgba(255, 255, 255, 0.1);
+            --text-color: #e2e2f0;
+            --text-muted: rgba(226, 226, 240, 0.45);
+            --icon-faint: rgba(226, 226, 240, 0.08);
+            --search-icon-color: rgba(226, 226, 240, 0.35);
+            --line-1: rgba(255, 255, 255, 0.08);
+            --line-2: rgba(255, 255, 255, 0.05);
+            --price-bg: rgba(102, 126, 234, 0.18);
+            --card-img-bg: rgba(255, 255, 255, 0.03);
+            --card-img-border: rgba(255, 255, 255, 0.05);
+            --btn-bg-1: #4a5fc8;
+            --btn-bg-2: #2a3fa0;
+            --btn-hover-shadow: rgba(74, 95, 200, 0.3);
+            --hero-bg-1: #080818;
+            --hero-bg-2: #101030;
+            --hero-bg-3: #181848;
+            --hero-over-1: rgba(5, 5, 20, 0.85);
+            --hero-over-2: rgba(20, 20, 60, 0.7);
+            --orb-1: rgba(50, 50, 130, 0.25);
+            --orb-2: rgba(80, 40, 120, 0.15);
+            --toggle-bg: rgba(255, 255, 255, 0.07);
+            --toggle-border: rgba(255, 255, 255, 0.12);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding-top: 80px;
+            background: linear-gradient(135deg, var(--body-bg-1) 0%, var(--body-bg-2) 25%, var(--body-bg-3) 50%, var(--body-bg-4) 75%, var(--body-bg-5) 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            transition: 0.6s ease;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            z-index: 0;
+            pointer-events: none;
+            transition: 0.6s ease;
+        }
+        body::before { width: 500px; height: 500px; background: var(--orb-1); top: -100px; right: -100px; }
+        body::after { width: 400px; height: 400px; background: var(--orb-2); bottom: -50px; left: -50px; }
+
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px var(--glass-shadow);
+            transition: 0.6s ease;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 0 24px; height: 72px;
+            display: flex; align-items: center; justify-content: space-between;
+            background: var(--header-bg);
+            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--header-border);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+            transition: 0.6s ease;
+        }
+
+        .logo-link { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+        .logo-svg-header { height: 54px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2)); }
+        .header-right { display: flex; align-items: center; gap: 12px; flex: 1; justify-content: flex-end; }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-toggle {
+            width: 46px; height: 46px; border-radius: 12px;
+            border: 1px solid var(--toggle-border);
+            background: var(--toggle-bg);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.3s ease;
+            flex-shrink: 0; position: relative; overflow: hidden;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .theme-toggle:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(102,126,234,0.25); }
+        .theme-toggle:active { transform: scale(0.92); }
+
+        .theme-toggle svg {
+            pointer-events: none;
+            position: absolute;
+            width: 22px; height: 22px;
+            transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            fill: none; stroke-width: 2;
+        }
+        .theme-toggle .sun-icon { stroke: #f59e0b; }
+        .theme-toggle .moon-icon { stroke: #a5b4fc; }
+
+        [data-theme="light"] .sun-icon { opacity: 1; transform: rotate(0deg) scale(1); }
+        [data-theme="light"] .moon-icon { opacity: 0; transform: rotate(90deg) scale(0.3); }
+        [data-theme="dark"] .sun-icon { opacity: 0; transform: rotate(-90deg) scale(0.3); }
+        [data-theme="dark"] .moon-icon { opacity: 1; transform: rotate(0deg) scale(1); }
+
+        /* ===== SEARCH ===== */
+        .search-bar { position: relative; max-width: 320px; width: 100%; }
+        .search-bar input {
+            width: 100%; padding: 10px 16px 10px 42px;
+            border: 1px solid var(--input-border); border-radius: 12px;
+            background: var(--input-bg);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            font-size: 0.9rem; color: var(--text-color); outline: none;
+            transition: 0.3s ease;
+        }
+        .search-bar input::placeholder { color: var(--text-muted); }
+        .search-bar input:focus {
+            border-color: var(--input-focus-border);
+            background: var(--input-focus-bg);
+            box-shadow: 0 0 20px rgba(102,126,234,0.15);
+        }
+        .search-bar .search-icon {
+            position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+            width: 18px; height: 18px; color: var(--search-icon-color);
+            pointer-events: none; transition: 0.6s ease;
+        }
+
+        /* ===== MAIN ===== */
+        .main { max-width: 1200px; margin: 0 auto; padding: 24px 20px 60px; position: relative; z-index: 1; }
+
+        /* ===== NEW HERO BANNER ===== */
+        .hero {
+            border-radius: 20px; margin-bottom: 40px; position: relative;
+            overflow: hidden; min-height: 420px;
+            background: linear-gradient(135deg, var(--hero-bg-1) 0%, var(--hero-bg-2) 50%, var(--hero-bg-3) 100%);
+            transition: 0.6s ease;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('https://files.fm/thumb_show.php?i=zqu7wpw3yc');
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            animation: heroImageFadeIn 1s ease 0.3s forwards;
+        }
+
+        @keyframes heroImageFadeIn {
+            from { opacity: 0; transform: scale(1.05); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, var(--hero-over-1) 0%, var(--hero-over-2) 100%);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 40px; transition: 0.6s ease;
+        }
+        .hero-logo-svg { height: 160px; width: auto; filter: drop-shadow(0 10px 35px rgba(0,0,0,0.5)); margin-bottom: 24px; }
+        .hero-tagline { color: #fff; font-size: 1.8rem; font-weight: 700; text-align: center; text-shadow: 0 3px 15px rgba(0,0,0,0.6); margin-bottom: 12px; }
+        .hero-subtitle { color: rgba(255,255,255,0.9); font-size: 1.1rem; text-align: center; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+
+        /* ===== GRID ===== */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 24px; }
+
+        .card { border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s ease; }
+        .card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px var(--glass-shadow); }
+
+        .card-image {
+            width: 100%; aspect-ratio: 4/3; background: var(--card-img-bg);
+            border-bottom: 1px solid var(--card-img-border);
+            display: flex; align-items: center; justify-content: center; transition: 0.6s ease;
+        }
+        .card-image svg { width: 48px; height: 48px; color: var(--icon-faint); transition: 0.6s ease; }
+
+        .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+        .card-title { height: 14px; width: 85%; background: var(--line-1); border-radius: 7px; transition: 0.6s ease; }
+        .card-title-short { height: 14px; width: 55%; background: var(--line-2); border-radius: 7px; transition: 0.6s ease; }
+        .card-price { height: 18px; width: 30%; background: var(--price-bg); border-radius: 9px; margin-top: 4px; transition: 0.6s ease; }
+
+        .card-btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            margin-top: auto; padding: 12px 20px; border: none; border-radius: 12px;
+            background: linear-gradient(135deg, var(--btn-bg-1), var(--btn-bg-2));
+            color: #fff; font-size: 0.9rem; font-weight: 600; cursor: pointer;
+            transition: 0.3s ease; text-decoration: none;
+        }
+        .card-btn:hover { transform: scale(1.03); box-shadow: 0 8px 25px var(--btn-hover-shadow); }
+        .card-btn svg { width: 16px; height: 16px; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            body { padding-top: 70px; }
+            .header { padding: 0 16px; height: 65px; }
+            .logo-svg-header { height: 46px; }
+            .search-bar { max-width: 200px; }
+            .theme-toggle { width: 40px; height: 40px; }
+            .theme-toggle svg { width: 20px; height: 20px; }
+            .main { padding: 16px 14px 40px; }
+            .hero { border-radius: 16px; margin-bottom: 28px; min-height: 320px; }
+            .hero-logo-svg { height: 120px; }
+            .hero-tagline { font-size: 1.4rem; }
+            .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px; }
+        }
+        @media (max-width: 480px) {
+            .header { height: 60px; }
+            .logo-svg-header { height: 40px; }
+            .search-bar { max-width: 150px; }
+            .theme-toggle { width: 36px; height: 36px; border-radius: 10px; }
+            .theme-toggle svg { width: 18px; height: 18px; }
+            .header-right { gap: 8px; }
+            .grid { grid-template-columns: 1fr; gap: 16px; }
+            .hero { min-height: 280px; }
+            .hero-logo-svg { height: 90px; }
+            .hero-tagline { font-size: 1.2rem; }
+            .hero-overlay { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SVG LOGO -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden">
+        <defs>
+            <linearGradient id="c1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f0f0f0"/><stop offset="15%" stop-color="#d8d8d8"/><stop offset="30%" stop-color="#fafafa"/><stop offset="45%" stop-color="#b0b0b0"/><stop offset="60%" stop-color="#e8e8e8"/><stop offset="75%" stop-color="#c0c0c0"/><stop offset="100%" stop-color="#a8a8a8"/></linearGradient>
+            <linearGradient id="c2" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0%" stop-color="#e0e0e0"/><stop offset="20%" stop-color="#fcfcfc"/><stop offset="40%" stop-color="#b8b8b8"/><stop offset="55%" stop-color="#e8e8e8"/><stop offset="70%" stop-color="#d0d0d0"/><stop offset="85%" stop-color="#f5f5f5"/><stop offset="100%" stop-color="#9a9a9a"/></linearGradient>
+            <linearGradient id="sb" x1="0.5" y1="0" x2="0.5" y2="1"><stop offset="0%" stop-color="#3d5abe"/><stop offset="25%" stop-color="#2a4396"/><stop offset="50%" stop-color="#1a2d6e"/><stop offset="75%" stop-color="#122058"/><stop offset="100%" stop-color="#0a1540"/></linearGradient>
+            <radialGradient id="ss" cx="0.35" cy="0.25" r="0.7"><stop offset="0%" stop-color="rgba(120,160,255,0.25)"/><stop offset="100%" stop-color="rgba(10,20,60,0)"/></radialGradient>
+            <linearGradient id="bc" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8e8e8"/><stop offset="20%" stop-color="#fafafa"/><stop offset="40%" stop-color="#c8c8c8"/><stop offset="60%" stop-color="#f0f0f0"/><stop offset="80%" stop-color="#d0d0d0"/><stop offset="100%" stop-color="#b0b0b0"/></linearGradient>
+            <linearGradient id="bf" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2a4396"/><stop offset="50%" stop-color="#1a2d6e"/><stop offset="100%" stop-color="#122058"/></linearGradient>
+            <linearGradient id="is" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c8d8ff"/><stop offset="100%" stop-color="#8aa0dd"/></linearGradient>
+            <filter id="ds" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(0,0,0,0.35)"/></filter>
+            <symbol id="logo" viewBox="0 0 240 280">
+                <g filter="url(#ds)">
+                    <path d="M120 10 L225 55 Q230 57 230 62 L230 140 Q230 200 120 258 Q10 200 10 140 L10 62 Q10 57 15 55 Z" fill="url(#c1)" stroke="url(#c2)" stroke-width="1.5"/>
+                    <path d="M120 22 L215 62 L215 138 Q215 192 120 246 Q25 192 25 138 L25 62 Z" fill="none" stroke="url(#c2)" stroke-width="3" opacity="0.6"/>
+                    <path d="M120 28 L210 65 L210 136 Q210 188 120 242 Q30 188 30 136 L30 65 Z" fill="url(#sb)"/>
+                    <path d="M120 28 L210 65 L210 136 Q210 188 120 242 Q30 188 30 136 L30 65 Z" fill="url(#ss)"/>
+                    <path d="M55 68 Q120 42 185 68" fill="none" stroke="rgba(180,200,255,0.15)" stroke-width="20" stroke-linecap="round"/>
+                    <g transform="translate(68,72)"><rect width="34" height="56" rx="5" fill="rgba(15,25,60,0.6)" stroke="url(#is)" stroke-width="2.5"/><rect x="4" y="8" width="26" height="36" rx="2" fill="rgba(20,35,80,0.7)" stroke="rgba(140,170,230,0.3)" stroke-width="0.8"/><rect x="4" y="8" width="13" height="36" rx="2" fill="rgba(100,140,220,0.08)"/><line x1="13" y1="5" x2="21" y2="5" stroke="rgba(140,170,230,0.5)" stroke-width="1.5" stroke-linecap="round"/><circle cx="11" cy="5" r="1" fill="rgba(140,170,230,0.4)"/><circle cx="17" cy="51" r="3" fill="none" stroke="rgba(140,170,230,0.4)" stroke-width="1.2"/></g>
+                    <g transform="translate(116,82)"><rect width="52" height="34" rx="3" fill="rgba(15,25,60,0.6)" stroke="url(#is)" stroke-width="2.5"/><rect x="4" y="4" width="44" height="24" rx="2" fill="rgba(20,35,80,0.8)" stroke="rgba(140,170,230,0.3)")" stroke-width="0.8"/><rect x="4" y="4" width="22" height="24" rx="2" fill="rgba(100,140,220,0.08)"/><circle cx="26" cy="2" r="1" fill="rgba(140,170,230,0.3)"/><path d="M-8 36 L60 36 L64 42 Q64 44 62 44 L-10 44 Q-12 44 -12 42 Z" fill="rgba(15,25,60,0.5)" stroke="url(#is)" stroke-width="2"/><line x1="20" y1="40" x2="32" y2="40" stroke="rgba(140,170,230,0.3)" stroke-width="1" stroke-linecap="round"/></g>
+                    <path d="M8 148 L232 148 Q236 148 236 152 L236 182 Q236 186 232 186 L8 186 Q4 186 4 182 L4 152 Q4 148 8 148 Z" fill="url(#bc)" stroke="rgba(160,160,160,0.5)" stroke-width="1"/>
+                    <path d="M14 152 L226 152 L226 182 L14 182 Z" fill="url(#bf)"/>
+                    <line x1="14" y1="152" x2="226" y2="152" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+                    <path d="M4 148 L0 144 L0 190 L4 186 Z" fill="#888" opacity="0.5"/>
+                    <path d="M236 148 L240 144 L240 190 L236 186 Z" fill="#888" opacity="0.5"/>
+                    <text x="120" y="174" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="22" font-weight="800" fill="#fff">GadgetMaster.lk</text>
+                </g>
+            </symbol>
+        </defs>
+    </svg>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="#" class="logo-link">
+            <svg class="logo-svg-header" viewBox="0 0 240 280"><use href="#logo"/></svg>
+        </a>
+        <div class="header-right">
+
+            <!-- THEME TOGGLE — using inline onclick for guaranteed functionality -->
+            <button type="button" class="theme-toggle" onclick="toggleTheme()" title="Switch Theme">
+                <svg class="sun-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="5" stroke="currentColor" fill="none" stroke-width="2"/>
+                    <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <svg class="moon-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+
+            <!-- SEARCH -->
+            <div class="search-bar">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input type="text" placeholder="Search products...">
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="main">
+        <section class="hero glass">
+            <div class="hero-overlay">
+                <svg class="hero-logo-svg" viewBox="0 0 240 280"><use href="#logo"/></svg>
+                <h1 class="hero-tagline">Your Ultimate Gadget Destination</h1>
+                <p class="hero-subtitle">Discover the best tech deals and reviews</p>
+            </div>
+        </section>
+
+        <section class="grid">
+            <article class="card glass"><div class="card-image"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><div class="card-body"><div class="card-title"></div><div class="card-title-short"></div><div class="card-price"></div><a href="#" class="card-btn">View Product <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div></article>
+            <article class="card glass"><div class="card-image"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><div class="card-body"><div class="card-title"></div><div class="card-title-short"></div><div class="card-price"></div><a href="#" class="card-btn">View Product <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div></article>
+            <article class="card glass"><div class="card-image"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><div class="card-body"><div class="card-title"></div><div class="card-title-short"></div><div class="card-price"></div><a href="#" class="card-btn">View Product <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div></article>
+            <article class="card glass"><div class="card-image"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><div class="card-body"><div class="card-title"></div><div class="card-title-short"></div><div class="card-price"></div><a href="#" class="card-btn">View Product <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div></article>
+            <article class="card glass"><div class="card-image"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><div class="card-body"><div class="card-title"></div><div class="card-title-short"></div><div class="card-price"></div><a href="#" class="card-btn">View Product <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div></article>
+            <article class="card glass"><div class="card-image"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><div class="card-body"><div class="card-title"></div><div class="card-title-short"></div><div class="card-price"></div><a href="#" class="card-btn">View Product <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div></article>
+        </section>
+    </main>
+
+    <!-- THEME TOGGLE SCRIPT -->
+    <script>
+        // Load saved theme on page load
+        var savedTheme = localStorage.getItem('gm-theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+
+        // Global toggle function called by inline onclick
+        function toggleTheme() {
+            var root = document.documentElement;
+            var current = root.getAttribute('data-theme');
+
+            if (current === 'dark') {
+                root.setAttribute('data-theme', 'light');
+                localStorage.setItem('gm-theme', 'light');
+            } else {
+                root.setAttribute('data-theme', 'dark');
+                localStorage.setItem('gm-theme', 'dark');
+            }
+        }
+    </script>
+
+</body>
+</html>
+
