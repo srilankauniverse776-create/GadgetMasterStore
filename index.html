@@ -440,6 +440,14 @@
       width: 100%;
       aspect-ratio: 4/3;
       overflow: hidden;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .card-body {
@@ -710,7 +718,23 @@
     </section>
 
     <section class="grid" id="products">
-      <article class="card glass product-card" data-category="audio" data-title="AirPods Pro 2nd Generation wireless earbuds bluetooth earphones audio">
+
+      <!-- Updated CCTV Camera Product -->
+      <article class="card glass product-card" data-category="accessories" data-title="sc03 dual lens 6mp 4g sim wifi hd wireless cctv camera 360 night vision indoor outdoor">
+        <div class="card-image">
+          <img src="https://files.fm/thumb_show.php?i=dby8c2usz4" alt="SC03 Dual Lens CCTV Camera" style="width:100%; height:100%; object-fit:cover;" />
+        </div>
+
+        <div class="card-body">
+          <span class="product-category">Accessories</span>
+          <h3 class="product-title">SC03 Dual Lens 6Mp | 4G Sim/WIFI HD Wireless Dual lens CCTV Camera 360 view with HD Infrared Night Vision Indoor/Outdoor</h3>
+          <div class="product-price">Rs. 8790</div>
+          <a href="https://s.daraz.lk/s.ZabIE?cc" target="_blank" rel="noopener noreferrer" class="card-btn">Click to Order</a>
+        </div>
+      </article>
+
+      <!-- Existing AirPods Product -->
+      <article class="card glass product-card" data-category="audio" data-title="airpods pro 2nd generation wireless earbuds bluetooth earphones audio">
         <div class="card-image">
           <img src="https://files.fm/thumb_show.php?i=7v7apk4swh" alt="AirPods Pro 2nd Generation" style="width:100%; height:100%; object-fit:cover;" />
         </div>
@@ -723,7 +747,8 @@
         </div>
       </article>
 
-      <article class="card glass product-card" data-category="phones" data-title="Nokia 105 Dual sim 4th Edition feature push button phone radio flashlight">
+      <!-- Existing Nokia Phone Product -->
+      <article class="card glass product-card" data-category="phones" data-title="nokia 105 dual sim 4th edition feature push button phone radio flashlight">
         <div class="card-image">
           <img src="https://files.fm/thumb_show.php?i=g9fnd4yd4a" alt="Nokia 105 Phone" style="width:100%; height:100%; object-fit:cover;" />
         </div>
@@ -735,6 +760,7 @@
           <a href="https://s.daraz.lk/s.AFRG?cc" target="_blank" rel="noopener noreferrer" class="card-btn">Click to Order</a>
         </div>
       </article>
+
     </section>
 
     <div class="empty-state" id="emptyState">
